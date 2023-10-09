@@ -12,8 +12,10 @@
         android:id="@+id/username"
         android:drawableLeft="@drawable/ic_baseline_person_24"
         android:drawablePadding="10dp"
+        android:paddingLeft="10dp"
+        android:background="@drawable/rounded_textfiled"
         android:layout_width="173dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
@@ -32,9 +34,11 @@
     <EditText
         android:id="@+id/password"
         android:drawableLeft="@drawable/ic_baseline_lock_24"
+        android:background="@drawable/rounded_textfiled"
         android:drawablePadding="10dp"
+        android:paddingLeft="10dp"
         android:layout_width="178dp"
-        android:layout_height="wrap_content"
+        android:layout_height="50dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentEnd="true"
@@ -56,9 +60,9 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="50dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginBottom="329dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginLeft="55dp"
+        android:layout_marginBottom="325dp"
         android:text="Sign Up"
         android:textColor="#2196F3" />
 
@@ -69,9 +73,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginEnd="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginBottom="329dp"
+        android:layout_marginEnd="55dp"
+        android:layout_marginRight="55dp"
+        android:layout_marginBottom="325dp"
         android:text="Forgot Password?"
         android:textColor="#2196F3"
  />
@@ -79,7 +83,7 @@
     <Button
         android:id="@+id/button2"
         android:layout_width="168dp"
-        android:layout_height="74dp"
+        android:layout_height="50dp"
         android:background = "@drawable/rounded_button"
         android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
@@ -90,6 +94,6 @@
         android:layout_marginLeft="50dp"
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
-        android:layout_marginBottom="240dp"
+        android:layout_marginBottom="260dp"
         android:text="LOGIN" />
 </RelativeLayout>
