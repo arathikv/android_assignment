@@ -8,6 +8,28 @@
     android:paddingRight="16dp"
     tools:context=".MainActivity2" >
 
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="515dp"
+        android:text="@string/login"
+        android:textColor="@color/blue"
+        android:textSize="28dp"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
     <EditText
         android:id="@+id/username"
         android:drawableLeft="@drawable/ic_baseline_person_24"
@@ -27,15 +49,20 @@
         android:layout_marginRight="50dp"
         android:layout_marginBottom="428dp"
         android:ems="10"
-        android:hint="username"
+        android:hint="@string/username"
         android:inputType="textPersonName"
-        android:text="" />
+        android:text=""
+        android:autofillHints="username"
+        android:paddingStart="10dp"
+        tools:ignore="HardcodedText,RtlSymmetry"
+        android:drawableStart="@drawable/ic_baseline_person_24" />
 
     <EditText
         android:id="@+id/password"
         android:drawableLeft="@drawable/ic_baseline_lock_24"
         android:background="@drawable/rounded_textfiled"
         android:drawablePadding="10dp"
+        android:paddingStart="10dp"
         android:paddingLeft="10dp"
         android:layout_width="178dp"
         android:layout_height="50dp"
@@ -50,8 +77,9 @@
         android:layout_marginRight="50dp"
         android:layout_marginBottom="356dp"
         android:ems="10"
-        android:hint="password"
-        android:inputType="textPassword" />
+        android:hint="@string/password"
+        android:inputType="textPassword"
+         />
 
     <TextView
         android:id="@+id/signUp"
@@ -63,7 +91,8 @@
         android:layout_marginStart="55dp"
         android:layout_marginLeft="55dp"
         android:layout_marginBottom="328dp"
-        android:text="Sign Up"
+        android:text="@string/signUp"
+        android:textStyle="bold"
         android:textColor="#2196F3" />
 
     <TextView
@@ -76,9 +105,10 @@
         android:layout_marginEnd="55dp"
         android:layout_marginRight="55dp"
         android:layout_marginBottom="328dp"
-        android:text="Forgot Password?"
+        android:text="@string/forgotPassword"
         android:textColor="#2196F3"
- />
+        android:textStyle="bold"
+        tools:ignore="RelativeOverlap" />
 
     <Button
         android:id="@+id/button2"
@@ -95,5 +125,20 @@
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="260dp"
-        android:text="LOGIN" />
+        android:text="@string/login" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="276dp"
+        android:layout_height="95dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="50dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="99dp"
+        android:visibility="gone" />
 </RelativeLayout>
