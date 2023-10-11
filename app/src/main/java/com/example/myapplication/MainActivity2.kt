@@ -2,10 +2,7 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity2 : AppCompatActivity() {
@@ -21,6 +18,12 @@ class MainActivity2 : AppCompatActivity() {
             val enteredPassword = passwordEditText.text.toString()
 
             validate(enteredUsername, enteredPassword)
+        }
+
+        val signUp = findViewById<TextView>(R.id.signUp)
+        signUp.setOnClickListener {
+            val intent = Intent(this, SignupActivity::class.java)
+            startActivity(intent)
         }
     }
 
