@@ -29,18 +29,29 @@ class MainActivity2 : AppCompatActivity() {
 
     fun validate(username: String, password: String) {
 
-        val username1 = "Admin"
-        val password1 = "123"
         val successImageView1 = findViewById<ImageView>(R.id.imageView1)
+        var user:UserAccount?=null
+        if(username==UserAccount.Admin.name) {
+             user = UserAccount.Admin
+        }
+        else if(username==UserAccount.User.name){
+            user=UserAccount.User
+        }
 
-        if (username1.equals(username) and password1.equals(password)) {
+        var passwordEnum = user?.password
+
+        if (passwordEnum.equals(password)) {
+
             showToast("Login Successful")
             successImageView1.setImageResource(R.drawable.success_image)
             successImageView1.visibility = ImageView.VISIBLE
 
-            val intent = Intent(this, HomeActivity::class.java)
-            startActivity(intent)
-        } else {
+            Intent(this, HomeActivity::class.java).run {
+            putExtra("message", "$username")
+            startActivity(this)
+            }
+        }
+         else {
             showToast("Login Failed")
             successImageView1.setImageResource(R.drawable.unsuccess_image)
             successImageView1.visibility = ImageView.VISIBLE
@@ -50,4 +61,8 @@ class MainActivity2 : AppCompatActivity() {
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+//
+//    fun Toast.setColor(){
+//        val this.textColor="#"
+//    }
 }
