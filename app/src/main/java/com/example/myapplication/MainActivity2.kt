@@ -2,8 +2,16 @@ package com.example.myapplication
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+
+const val BASE_URL="https://dummyjson.com/"
 
 class MainActivity2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,7 +33,9 @@ class MainActivity2 : AppCompatActivity() {
             val intent = Intent(this, SignupActivity::class.java)
             startActivity(intent)
         }
+
     }
+
 
     fun validate(username: String, password: String) {
 
@@ -61,6 +71,25 @@ class MainActivity2 : AppCompatActivity() {
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
+
+    //retrofit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //
 //    fun Toast.setColor(){
 //        val this.textColor="#"
