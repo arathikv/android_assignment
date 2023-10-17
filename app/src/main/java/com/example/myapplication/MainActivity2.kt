@@ -106,7 +106,7 @@ class MainActivity2 : AppCompatActivity() {
 
         println(username2 + password2)
 
-        val request = AuthenticationRequest(username2, password2)
+        val request = AuthenticationRequest(username1, password1)
 
         GlobalScope.launch(Dispatchers.IO) {
             try {

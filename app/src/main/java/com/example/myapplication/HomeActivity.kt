@@ -25,12 +25,21 @@ class HomeActivity : AppCompatActivity() {
 
         val frag1 = Example1Fragment.newInstance("frag1", "frag2")
         val frag2 = Example2Fragment.newInstance()
+        val frag3 = Example3Fragment.newInstance()
+        val frag4 = Example4Fragment.newInstance()
+
+
+
         supportFragmentManager.beginTransaction()
             .add(R.id.frame1, frag1, "tag_frag1")
             .commit()
 
         val button_1 = findViewById<Button>(R.id.button_1)
         val button_2 = findViewById<Button>(R.id.button_2)
+        val button_3 = findViewById<Button>(R.id.button_3)
+        val button_4 = findViewById<Button>(R.id.button_4)
+
+
 
         button_1.setOnClickListener() {
             supportFragmentManager.beginTransaction()
@@ -40,6 +49,16 @@ class HomeActivity : AppCompatActivity() {
         button_2.setOnClickListener() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.frame1, frag2, "tag_frag1")
+                .commit()
+        }
+        button_3.setOnClickListener() {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frame1, frag3, "tag_frag3")
+                .commit()
+        }
+        button_4.setOnClickListener() {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.frame1, frag4, "tag_frag3")
                 .commit()
         }
 
