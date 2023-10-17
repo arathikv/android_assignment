@@ -92,10 +92,8 @@ class MainActivity2 : AppCompatActivity() {
     //retrofit login validation
 
     fun makeApiRequest(enteredUsername: String, enteredPassword: String) {
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+
+        val retrofit=UsersApiHelper.getInstance()
 
         val apiService = retrofit.create(UsersApiInterface::class.java)
 
