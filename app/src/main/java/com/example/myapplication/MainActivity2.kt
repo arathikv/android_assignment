@@ -80,7 +80,8 @@ class MainActivity2 : AppCompatActivity() {
 
     private fun showToastAndNavigate(context: Context, message: String, user: UsersApiData,) {
         showToast(context, message)
-
+        successImageView1.setImageResource(R.drawable.success_image)
+        successImageView1.visibility = ImageView.VISIBLE
         // Create an Intent to navigate to another activity or fragment
         Intent(context, HomeActivity::class.java).run {
             putExtra("message", user.username)
@@ -114,20 +115,11 @@ class MainActivity2 : AppCompatActivity() {
                 println("User details: $user")
                 launch(Dispatchers.Main) {
                     showToastAndNavigate(this@MainActivity2,"Login successful",user)
-                    successImageView1.setImageResource(R.drawable.success_image)
-                    successImageView1.visibility = ImageView.VISIBLE
                 }
 
             } catch (e: Exception) {
                 // Authentication failed, handle the error
                 handleAuthenticationFailure(e)
-//                println("Authentication failed. Error: ${e.message}")
-//                launch(Dispatchers.Main) {
-//                    showToast(this@MainActivity2, "Login failed.")
-//                    successImageView1.setImageResource(R.drawable.unsuccess_image)
-//                    successImageView1.visibility = ImageView.VISIBLE
-//                }
-
             }
         }
     }
@@ -135,8 +127,6 @@ class MainActivity2 : AppCompatActivity() {
         println("Authentication failed. Error: ${exception.message}")
 
         runOnUiThread {
-//            val successImageView1 = findViewById<ImageView>(R.id.imageView1)
-
             showToast(this@MainActivity2, "Login failed.")
             successImageView1.setImageResource(R.drawable.unsuccess_image)
             successImageView1.visibility = ImageView.VISIBLE
