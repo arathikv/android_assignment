@@ -35,6 +35,9 @@ class CarAdapter(private val mList: List<CarResult>) : RecyclerView.Adapter<CarA
         holder.itemView.setOnClickListener {
             itemClickListener?.onItemClick(carResult)
         }
+//        holder.itemView.setOnClickListener{
+//            onItemClicked(carResult)
+//        }
         println(carResult)
     }
 

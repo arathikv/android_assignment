@@ -8,11 +8,13 @@
 
 
     <LinearLayout
+        android:id="@+id/l1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginTop="50dp"
 
         >
@@ -23,12 +25,14 @@
             android:textSize="16sp"
             android:textColor="@color/black"
             android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textAlignment="center"
             android:text="CAR DETAILS FRAGMENT"
             />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="10dp" />
+            android:layout_height="20dp" />
 
         <TextView
             android:id="@+id/Country"
@@ -73,6 +77,17 @@
             android:text="TextView"
             android:textSize="16sp"
             android:textColor="@color/black"/>
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="20dp" />
     </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerview_vehicle_type"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        tools:itemCount="5"
+        tools:listitem="@layout/vehicle_type_design"
+        app:layout_constraintTop_toBottomOf="@+id/l1"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
