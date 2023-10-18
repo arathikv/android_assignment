@@ -9,7 +9,7 @@
     <FrameLayout
         android:id="@+id/frame1"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="500dp"
 
         tools:ignore="MissingConstraints" />
 
@@ -41,48 +41,20 @@
             android:textSize="24dp"
             android:textStyle="bold" />
 
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <Button
-            android:id="@+id/button_1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:text="Profile Picture" />
-
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <Button
-            android:id="@+id/button_2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:text="Details" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-
-        <Button
-            android:id="@+id/button_3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:text="List" />
-        <Space
-            android:layout_width="match_parent"
-            android:layout_height="20dp" />
-        <Button
-            android:id="@+id/button_4"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/rounded_button"
-            android:text="List API" />
-
 
     </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu"
+        android:background="@color/black"
+        app:itemIconTint="@color/white"
+        app:itemTextColor="@color/white"
+        app:itemIconSize="30dp"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

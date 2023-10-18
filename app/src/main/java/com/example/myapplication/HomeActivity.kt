@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -14,9 +17,44 @@ const val BASE_URL1 = "https://ron-swanson-quotes.herokuapp.com/"
 
 
 class HomeActivity : AppCompatActivity() {
+
+    private lateinit var bottomNavigationView: BottomNavigationView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        bottomNavigationView = findViewById(R.id.bottom_navigation)
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
+            when (menuItem.itemId) {
+                R.id.bottom_home -> {
+                    replaceFragment(Example1Fragment())
+                    true
+                }
+
+                R.id.bottom_quotes -> {
+                    replaceFragment(Example2Fragment())
+                    true
+                }
+
+                R.id.bottom_views -> {
+                    replaceFragment(Example3Fragment())
+                    true
+                }
+
+                R.id.bottom_cars -> {
+                    replaceFragment(Example4Fragment())
+                    true
+                }
+
+                else -> false
+            }
+        }
+
+
+        replaceFragment(Example1Fragment())
 
         val receivedData = intent.getStringExtra("message")
         val welcome = findViewById<TextView>(R.id.welcome)
@@ -34,33 +72,6 @@ class HomeActivity : AppCompatActivity() {
             .add(R.id.frame1, frag1, "tag_frag1")
             .commit()
 
-        val button_1 = findViewById<Button>(R.id.button_1)
-        val button_2 = findViewById<Button>(R.id.button_2)
-        val button_3 = findViewById<Button>(R.id.button_3)
-        val button_4 = findViewById<Button>(R.id.button_4)
-
-
-
-        button_1.setOnClickListener() {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frame1, frag1, "tag_frag1")
-                .commit()
-        }
-        button_2.setOnClickListener() {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frame1, frag2, "tag_frag1")
-                .commit()
-        }
-        button_3.setOnClickListener() {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frame1, frag3, "tag_frag3")
-                .commit()
-        }
-        button_4.setOnClickListener() {
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.frame1, frag4, "tag_frag3")
-                .commit()
-        }
 
         getQuotes()
     }
@@ -84,6 +95,10 @@ class HomeActivity : AppCompatActivity() {
             }
 
         }
+    }
+
+    private fun replaceFragment(fragment: Fragment) {
+        supportFragmentManager.beginTransaction().replace(R.id.frame1, fragment).commit()
     }
 
 

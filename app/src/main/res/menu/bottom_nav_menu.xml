@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/bottom_home"
+        android:icon="@drawable/baseline_home_24"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/bottom_quotes"
+        android:icon="@drawable/baseline_message_24"
+        android:title="Quotes"/>
+
+    <item
+        android:id="@+id/bottom_views"
+        android:icon="@drawable/baseline_view_list_24"
+        android:title="View"/>
+    <item
+        android:id="@+id/bottom_cars"
+        android:icon="@drawable/baseline_directions_car_24"
+        android:title="Cars"/>
+
+</menu>
