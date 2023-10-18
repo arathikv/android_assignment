@@ -27,7 +27,7 @@ class CarDetailsFragment : Fragment() {
 
 
         println(arguments)
-        val carData = arguments?.getSerializable("carData") as CarResult?
+        val carData = arguments?.getParcelable("carData") as CarResult?
 
 
         val vehicleType=carData?.VehicleTypes
@@ -62,20 +62,16 @@ class CarDetailsFragment : Fragment() {
             val fragment = CarDetailsFragment()
 
             val args = Bundle()
-//            args.putParcelable("carData", carData) // Use putParcelable if your object is Parcelable
-            args.putSerializable("carData", carData)
+            //doing parcelable
+
+            args.putParcelable("carData", carData) // Use putParcelable if your object is Parcelable
+//            args.putSerializable("carData", carData)
 
             fragment.arguments = args
             println(carData.Country)
 
             return fragment
         }
-//        fun newInstance(param1: String, param2: String) =
-//            CarDetailsFragment().apply {
-//                arguments = Bundle().apply {
-//                    putString(ARG_PARAM1, param1)
-//                    putString(ARG_PARAM2, param2)
-//                }
-//            }
+
     }
 }
