@@ -62,7 +62,7 @@ class HomeActivity : AppCompatActivity() {
 
 
         val frag1 = Example1Fragment.newInstance("frag1", "frag2")
-        val frag2 = Example2Fragment.newInstance()
+//        val frag2 = Example2Fragment.newInstance()
         val frag3 = Example3Fragment.newInstance()
         val frag4 = Example4Fragment.newInstance()
 
@@ -73,29 +73,29 @@ class HomeActivity : AppCompatActivity() {
             .commit()
 
 
-        getQuotes()
+//        getQuotes()
     }
 
-    private fun getQuotes() {
-        val retrofitBuilder = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(BASE_URL1)
-            .build()
-            .create(QuotesInterface::class.java)
-        val qq = findViewById<TextView>(R.id.q1)
-        GlobalScope.launch {
-            val retrofitData1 = retrofitBuilder.getQuotes()
-            val data = retrofitData1.body()?.first()
-            println(data)
-            if (data != null && data.isNotEmpty()) {
-                runOnUiThread {
-                    qq.text = data
-
-                }
-            }
-
-        }
-    }
+//    private fun getQuotes() {
+//        val retrofitBuilder = Retrofit.Builder()
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .baseUrl(BASE_URL1)
+//            .build()
+//            .create(QuotesInterface::class.java)
+//        val qq = findViewById<TextView>(R.id.q1)
+//        GlobalScope.launch {
+//            val retrofitData1 = retrofitBuilder.getQuotes()
+//            val data = retrofitData1.body()?.first()
+//            println(data)
+//            if (data != null && data.isNotEmpty()) {
+//                runOnUiThread {
+//                    qq.text = data
+//
+//                }
+//            }
+//
+//        }
+//    }
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.frame1, fragment).commit()
