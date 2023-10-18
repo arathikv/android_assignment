@@ -3,14 +3,25 @@ package com.example.myapplication
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.AdapterView.OnItemClickListener
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
 class CarAdapter(private val mList: List<CarResult>) : RecyclerView.Adapter<CarAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    //
+    private var itemClickListener:OnItemClickListener?=null
+    interface OnItemClickListener{
+        fun onItemClick(carData:CarResult)
+    }
 
+    fun setOnItemClickListener(listener: OnItemClickListener){
+        itemClickListener=listener
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.car_view_design, parent, false)
 
@@ -18,13 +29,12 @@ class CarAdapter(private val mList: List<CarResult>) : RecyclerView.Adapter<CarA
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-
-
-
         val carResult= mList[position]
         holder.textView1.text = carResult.Mfr_CommonName
         holder.textView.text = carResult.Country
-
+        holder.itemView.setOnClickListener {
+            itemClickListener?.onItemClick(carResult)
+        }
         println(carResult)
     }
 

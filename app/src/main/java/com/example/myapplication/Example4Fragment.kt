@@ -21,10 +21,7 @@ class Example4Fragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-
     }
-
 
     @OptIn(DelicateCoroutinesApi::class)
     override fun onCreateView(
@@ -33,12 +30,8 @@ class Example4Fragment : Fragment() {
     ): View? {
 
         val view = inflater.inflate(R.layout.fragment_example4, container, false)
-
         val recyclerView1 = view.findViewById<RecyclerView>(R.id.recyclerview1)
-
         recyclerView1.layoutManager = LinearLayoutManager(requireContext())
-
-
 
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
@@ -46,24 +39,31 @@ class Example4Fragment : Fragment() {
             .build()
             .create(CarInterface::class.java)
 
+
         GlobalScope.launch(Dispatchers.Main) {
-
             val retrofitData = retrofitBuilder.getData()
-
-
             Log.d("CAR RESPONSE : ", retrofitData.Results.toString())
-
-
             val adapter = CarAdapter(retrofitData.Results)
+
+//item click move to new fragment
+
+            // Set an item click listener for the adapter
+            adapter.setOnItemClickListener(object : CarAdapter.OnItemClickListener {
+                override fun onItemClick(carData: CarResult) {
+                    // Handle the click event here
+                    val anotherFragment =CarDetailsFragment.newInstance(carData)
+                    val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.frame1, anotherFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                }
+            })
 
             recyclerView1.adapter = adapter
 
         }
 
-
-
         return view
-
     }
 
     companion object {
