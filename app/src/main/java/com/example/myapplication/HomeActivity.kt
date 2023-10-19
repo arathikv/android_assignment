@@ -72,30 +72,8 @@ class HomeActivity : AppCompatActivity() {
             .add(R.id.frame1, frag1, "tag_frag1")
             .commit()
 
-
-//        getQuotes()
     }
 
-//    private fun getQuotes() {
-//        val retrofitBuilder = Retrofit.Builder()
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .baseUrl(BASE_URL1)
-//            .build()
-//            .create(QuotesInterface::class.java)
-//        val qq = findViewById<TextView>(R.id.q1)
-//        GlobalScope.launch {
-//            val retrofitData1 = retrofitBuilder.getQuotes()
-//            val data = retrofitData1.body()?.first()
-//            println(data)
-//            if (data != null && data.isNotEmpty()) {
-//                runOnUiThread {
-//                    qq.text = data
-//
-//                }
-//            }
-//
-//        }
-//    }
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.frame1, fragment).commit()
