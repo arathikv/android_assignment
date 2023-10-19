@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="16dp"
     android:paddingRight="16dp"
-    tools:context=".MainActivity2" >
+    tools:context=".modules.login.MainActivity2" >
 
 
     <TextView
