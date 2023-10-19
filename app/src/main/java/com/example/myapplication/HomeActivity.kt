@@ -57,8 +57,8 @@ class HomeActivity : AppCompatActivity() {
         replaceFragment(Example1Fragment())
 
         val receivedData = intent.getStringExtra("message")
-        val welcome = findViewById<TextView>(R.id.welcome)
-        welcome.setText("Name : $receivedData")
+//        val welcome = findViewById<TextView>(R.id.welcome)
+//        welcome.setText("Name : $receivedData")
 
 
         val frag1 = Example1Fragment.newInstance("frag1", "frag2")
