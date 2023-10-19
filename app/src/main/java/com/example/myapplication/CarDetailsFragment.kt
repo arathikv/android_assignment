@@ -49,7 +49,7 @@ class CarDetailsFragment : Fragment() {
 
         Country1?.text = "Country : $country"
         CommonName1?.text = "Mfr_CommonName : $Mfr_CommonName"
-        ID1?.text = "Mfr_ID : $Mfr_ID.toString()"
+        ID1?.text = "Mfr_ID : $Mfr_ID"
         Name1?.text = "Mfr_Name : $Mfr_Name"
         // Inflate the layout for this fragment
         return view

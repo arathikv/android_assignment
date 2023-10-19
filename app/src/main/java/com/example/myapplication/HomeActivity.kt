@@ -26,7 +26,6 @@ class HomeActivity : AppCompatActivity() {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation)
 
-
         bottomNavigationView.setOnNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.bottom_home -> {
@@ -52,32 +51,23 @@ class HomeActivity : AppCompatActivity() {
                 else -> false
             }
         }
-
-
         replaceFragment(Example1Fragment())
 
         val receivedData = intent.getStringExtra("message")
 //        val welcome = findViewById<TextView>(R.id.welcome)
 //        welcome.setText("Name : $receivedData")
 
-
-        val frag1 = Example1Fragment.newInstance("frag1", "frag2")
-//        val frag2 = Example2Fragment.newInstance()
-        val frag3 = Example3Fragment.newInstance()
-        val frag4 = Example4Fragment.newInstance()
-
-
-
-        supportFragmentManager.beginTransaction()
-            .add(R.id.frame1, frag1, "tag_frag1")
-            .commit()
-
+//        val frag1 = Example1Fragment.newInstance("frag1", "frag2")
+////        val frag2 = Example2Fragment.newInstance()
+//        val frag3 = Example3Fragment.newInstance()
+//        val frag4 = Example4Fragment.newInstance()
+//
+//        supportFragmentManager.beginTransaction()
+//            .add(R.id.frame1, frag1, "tag_frag1")
+//            .commit()
     }
-
 
     private fun replaceFragment(fragment: Fragment) {
         supportFragmentManager.beginTransaction().replace(R.id.frame1, fragment).commit()
     }
-
-
 }

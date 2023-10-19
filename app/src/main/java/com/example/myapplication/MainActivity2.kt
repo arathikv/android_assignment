@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
@@ -15,22 +16,31 @@ const val BASE_URL = "https://dummyjson.com/"
 
 class MainActivity2 : AppCompatActivity() {
     private lateinit var successImageView1: ImageView
-
-
+    private lateinit var sh :SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main2)
-        successImageView1 = findViewById(R.id.imageView1)
 
         val usernameEditText = findViewById<EditText>(R.id.username)
         val passwordEditText = findViewById<EditText>(R.id.password)
         val loginButton = findViewById<Button>(R.id.button2)
+        successImageView1 = findViewById(R.id.imageView1)
 
-        loginButton.setOnClickListener {
-            val enteredUsername = usernameEditText.text.toString()
-            val enteredPassword = passwordEditText.text.toString()
-            makeApiRequest(enteredUsername, enteredPassword)
-//            validate(enteredUsername, enteredPassword)
+        sh=getSharedPreferences("SharedPref", MODE_PRIVATE)
+
+
+        if (sh.contains("name")) {
+            Intent(this, HomeActivity::class.java).run {
+                startActivity(this)
+            }
+        }
+        else {
+            loginButton.setOnClickListener {
+                val enteredUsername = usernameEditText.text.toString()
+                val enteredPassword = passwordEditText.text.toString()
+                makeApiRequest(enteredUsername, enteredPassword)
+                //            validate(enteredUsername, enteredPassword)
+            }
         }
 
         val signUp = findViewById<TextView>(R.id.signUp)
@@ -77,7 +87,6 @@ class MainActivity2 : AppCompatActivity() {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
-
     private fun showToastAndNavigate(context: Context, message: String, user: UsersApiData,) {
         showToast(context, message)
         successImageView1.setImageResource(R.drawable.success_image)
@@ -91,11 +100,8 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     //retrofit login validation
-
     fun makeApiRequest(enteredUsername: String, enteredPassword: String) {
-
         val retrofit=UsersApiHelper.getInstance()
-
         val apiService = retrofit.create(UsersApiInterface::class.java)
 
         val username1 = "kdulyt"
@@ -106,7 +112,7 @@ class MainActivity2 : AppCompatActivity() {
 
         println(username2 + password2)
 
-        val request = AuthenticationRequest(username1, password1)
+        val request = AuthenticationRequest(username2, password2)
 
         GlobalScope.launch(Dispatchers.IO) {
             try {
@@ -115,6 +121,7 @@ class MainActivity2 : AppCompatActivity() {
                 println("User details: $user")
                 launch(Dispatchers.Main) {
                     showToastAndNavigate(this@MainActivity2,"Login successful",user)
+                    storeData(user)
                 }
 
             } catch (e: Exception) {
@@ -122,6 +129,14 @@ class MainActivity2 : AppCompatActivity() {
                 handleAuthenticationFailure(e)
             }
         }
+    }
+    private fun storeData(user: UsersApiData) {
+        var editor= sh.edit()
+        editor.putString("name",user.firstName)
+        editor.putString("username",user.username)
+        editor.putString("email",user.email)
+        editor.apply()
+
     }
     private fun handleAuthenticationFailure(exception: Exception) {
         println("Authentication failed. Error: ${exception.message}")
