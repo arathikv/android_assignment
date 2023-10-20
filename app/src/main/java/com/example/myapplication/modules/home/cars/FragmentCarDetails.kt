@@ -29,11 +29,9 @@ class FragmentCarDetails : Fragment() {
         println(arguments)
         val carData = arguments?.getParcelable("carData") as CarResult?
 
-
         val vehicleType=carData?.VehicleTypes
         val adapter = vehicleType?.let { VehicleTypeAdapter(it) }
         recyclerview.adapter = adapter
-
 
         val country = carData?.Country
         val Mfr_CommonName = carData?.Mfr_CommonName
@@ -56,22 +54,16 @@ class FragmentCarDetails : Fragment() {
     }
 
     companion object {
-
         @JvmStatic
         fun newInstance(carData: CarResult): FragmentCarDetails {
             val fragment = FragmentCarDetails()
-
             val args = Bundle()
             //doing parcelable
-
             args.putParcelable("carData", carData) // Use putParcelable if your object is Parcelable
 //            args.putSerializable("carData", carData)
-
             fragment.arguments = args
             println(carData.Country)
-
             return fragment
         }
-
     }
 }
