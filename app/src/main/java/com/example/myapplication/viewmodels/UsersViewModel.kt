@@ -48,10 +48,7 @@ class UsersViewModel : ViewModel() {
                 // Authentication successful, handle the user data
                 liveData.value=user
                 println("User details: $user")
-//                launch(Dispatchers.Main) {
-////                    showToastAndNavigate(this@MainActivity2,"Login successful",user)
-////                    storeData(user)
-//                }
+
 
             } catch (e: Exception) {
                 liveData.value=null
