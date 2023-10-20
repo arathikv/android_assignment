@@ -6,7 +6,6 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.myapplication.modules.home.HomeActivity
 import com.example.myapplication.R
@@ -16,7 +15,7 @@ import com.example.myapplication.models.UsersApiData
 const val BASE_URL = "https://dummyjson.com/"
 
 class MainActivity2 : AppCompatActivity() {
-    private lateinit var sh: SharedPreferences
+    private lateinit var sharedPreferences: SharedPreferences
     private lateinit var viewModel: UsersViewModel
     private lateinit var successImageView1: ImageView
 
@@ -29,10 +28,10 @@ class MainActivity2 : AppCompatActivity() {
         val loginButton = findViewById<Button>(R.id.button2)
         successImageView1 = findViewById(R.id.imageView1)
 
-        sh = getSharedPreferences("SharedPref", MODE_PRIVATE)
+        sharedPreferences = getSharedPreferences("SharedPref", MODE_PRIVATE)
         viewModel = ViewModelProvider(this).get(UsersViewModel::class.java)
 
-        if (sh.contains("name")) {
+        if (sharedPreferences.contains("name")) {
             Intent(this, HomeActivity::class.java).run {
                 startActivity(this)
             }
@@ -81,7 +80,7 @@ class MainActivity2 : AppCompatActivity() {
     }
 
     private fun storeData(user: UsersApiData) {
-        var editor = sh.edit()
+        var editor = sharedPreferences.edit()
         editor.putString("name", user.firstName)
         editor.putString("username", user.username)
         editor.putString("email", user.email)
