@@ -54,7 +54,7 @@ class FragmentProfile : Fragment() {
         var sh= requireContext().getSharedPreferences("SharedPref", Context.MODE_PRIVATE)
 
         val name=sh.getString("name","")
-        val email=sh.getString("name","")
+        val email=sh.getString("email","")
 
 
         usernameTextView.text="Name: $name"
