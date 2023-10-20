@@ -40,21 +40,29 @@ class MainActivity2 : AppCompatActivity() {
             loginButton.setOnClickListener {
                 val enteredUsername = usernameEditText.text.toString()
                 val enteredPassword = passwordEditText.text.toString()
-                println(enteredUsername + enteredPassword)
+
                 viewModel.makeApiRequest(enteredUsername, enteredPassword)
                 viewModel.liveData.observe(this) {
                     println(it)
-
+                    val user = it
+                    if (user != null) {
+                        showToastAndNavigate(this@MainActivity2, "Login successful")
+                        storeData(user)
+                    }
+                    else{
+                        loginFailedToast()
+                    }
                 }
 
-                val user = viewModel.liveData.value
-                if (user != null) {
-                    showToastAndNavigate(this@MainActivity2, "Login successful")
-                    storeData(user)
-                }
-                else{
-                    loginFailedToast()
-                }
+
+//                val user = viewModel.liveData.value
+//                if (user != null) {
+//                    showToastAndNavigate(this@MainActivity2, "Login successful")
+//                    storeData(user)
+//                }
+//                else{
+//                    loginFailedToast()
+//                }
             }
         }
 

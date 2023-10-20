@@ -41,7 +41,7 @@ class UsersViewModel : ViewModel() {
         val request = AuthenticationRequest(username2, password2)
 //
 
-        viewModelScope.launch() {
+         viewModelScope.launch() {
             try {
                 val user = apiService.authenticate(request)
                 println(user)
@@ -54,6 +54,7 @@ class UsersViewModel : ViewModel() {
 //                }
 
             } catch (e: Exception) {
+                liveData.value=null
                 // Authentication failed, handle the error
 //                handleAuthenticationFailure(e)
             }
