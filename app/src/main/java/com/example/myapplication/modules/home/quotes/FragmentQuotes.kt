@@ -1,4 +1,4 @@
-package com.example.myapplication.modules.home
+package com.example.myapplication.modules.home.quotes
 
 import android.os.Bundle
 import android.view.LayoutInflater
