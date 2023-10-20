@@ -45,6 +45,7 @@ class MainActivity2 : AppCompatActivity() {
                 viewModel.makeApiRequest(enteredUsername, enteredPassword)
                 viewModel.liveData.observe(this) {
                     println(it)
+
                 }
 
                 val user = viewModel.liveData.value

@@ -13,4 +13,3 @@ data class CarResult(
     val VehicleTypes: List<VehicleType>
 ) : Parcelable
 
-//doing parceable

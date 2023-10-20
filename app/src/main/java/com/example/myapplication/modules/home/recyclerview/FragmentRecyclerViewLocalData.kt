@@ -8,7 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
-import com.example.myapplication.models.ItemsViewModel
+import com.example.myapplication.models.RecyclerViewDataItems
 
 class FragmentRecyclerViewLocalData : Fragment() {
 
@@ -29,12 +29,12 @@ class FragmentRecyclerViewLocalData : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         // ArrayList of class ItemsViewModel
-        val data = ArrayList<ItemsViewModel>()
+        val data = ArrayList<RecyclerViewDataItems>()
 
         // This loop will create 20 views containing
         // the image with the count of view
         for (i in 1..20) {
-            data.add(ItemsViewModel(R.drawable.ic_baseline_folder_24, "Folder $i"))
+            data.add(RecyclerViewDataItems(R.drawable.ic_baseline_folder_24, "Folder $i"))
         }
 
         // This will pass the ArrayList to our Adapter

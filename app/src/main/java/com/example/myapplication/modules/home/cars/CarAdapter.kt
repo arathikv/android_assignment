@@ -8,29 +8,29 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.models.CarResult
 
-class CarAdapter(private val mList: List<CarResult>) : RecyclerView.Adapter<CarAdapter.ViewHolder>() {
+class CarAdapter(private val mList: List<CarResult>) :
+    RecyclerView.Adapter<CarAdapter.ViewHolder>() {
 
-    //
-    private var itemClickListener: OnItemClickListener?=null
-    interface OnItemClickListener{
+    private var itemClickListener: OnItemClickListener? = null
+
+    interface OnItemClickListener {
         fun onItemClick(carData: CarResult)
     }
 
-    fun setOnItemClickListener(listener: OnItemClickListener){
-        itemClickListener=listener
+    fun setOnItemClickListener(listener: OnItemClickListener) {
+        itemClickListener = listener
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.car_view_design, parent, false)
-
         return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val carResult= mList[position]
-        holder.textView1.text = carResult.Mfr_CommonName
-        holder.textView.text = carResult.Country
+        val carResult = mList[position]
+        holder.carNameTextView.text = carResult.Mfr_CommonName
+        holder.carCountryTextView.text = carResult.Country
         holder.itemView.setOnClickListener {
             itemClickListener?.onItemClick(carResult)
         }
@@ -45,7 +45,7 @@ class CarAdapter(private val mList: List<CarResult>) : RecyclerView.Adapter<CarA
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val textView1: TextView = itemView.findViewById(R.id.txtcarname)
-        val textView: TextView = itemView.findViewById(R.id.txtcarCountry)
+        val carNameTextView: TextView = itemView.findViewById(R.id.txtCarName)
+        val carCountryTextView: TextView = itemView.findViewById(R.id.txtCarCountry)
     }
 }

@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.models.VehicleType
 
-class VehicleTypeAdapter (private val mList: List<VehicleType>) : RecyclerView.Adapter<VehicleTypeAdapter.ViewHolder>() {
+class VehicleTypeAdapter(private val vehicleTypeList: List<VehicleType>) :
+    RecyclerView.Adapter<VehicleTypeAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -17,22 +18,18 @@ class VehicleTypeAdapter (private val mList: List<VehicleType>) : RecyclerView.A
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val carResult= mList[position]
+        val carResult = vehicleTypeList[position]
         println(carResult)
-        holder.type1.text = carResult.Name
+        holder.vehicleType.text = carResult.Name
 //        holder.type2.text=carResult.IsPrimary.toString()
-//        holder.type2.text = carResult.Country
-//        holder.type3.text = carResult.Country
-
     }
 
     override fun getItemCount(): Int {
-        return mList.size
+        return vehicleTypeList.size
     }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val type1: TextView = itemView.findViewById(R.id.type1)
+        val vehicleType: TextView = itemView.findViewById(R.id.vehicleType)
 //        val type2: TextView = itemView.findViewById(R.id.type2)
-//        val type3: TextView = itemView.findViewById(R.id.type3)
     }
 }

@@ -27,10 +27,11 @@ class FragmentCarDetails : Fragment() {
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
         println(arguments)
-        val carData = arguments?.getParcelable("carData") as CarResult?
 
+        val carData = arguments?.getParcelable("carData") as CarResult?
         val vehicleType=carData?.VehicleTypes
         val adapter = vehicleType?.let { VehicleTypeAdapter(it) }
+
         recyclerview.adapter = adapter
 
         val country = carData?.Country
@@ -49,7 +50,7 @@ class FragmentCarDetails : Fragment() {
         CommonName1?.text = "Mfr_CommonName : $Mfr_CommonName"
         ID1?.text = "Mfr_ID : $Mfr_ID"
         Name1?.text = "Mfr_Name : $Mfr_Name"
-        // Inflate the layout for this fragment
+
         return view
     }
 

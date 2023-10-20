@@ -36,12 +36,13 @@ class Example4Fragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_car_list, container, false)
         val recyclerView1 = view.findViewById<RecyclerView>(R.id.recyclerview1)
         recyclerView1.layoutManager = LinearLayoutManager(requireContext())
+
         viewModel = ViewModelProvider(this).get(CarViewModel::class.java)
-
-//item click move to new fragment
-
         viewModel.carLiveData.observe(this) {
             val adapter = CarAdapter(it.Results)
+
+
+            //item click move to new fragment
             // Set an item click listener for the adapter
             adapter?.setOnItemClickListener(object : CarAdapter.OnItemClickListener {
                 override fun onItemClick(carData: CarResult) {

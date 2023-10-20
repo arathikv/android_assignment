@@ -10,9 +10,6 @@ import com.example.myapplication.modules.home.quotes.FragmentQuotes
 import com.example.myapplication.modules.home.recyclerview.FragmentRecyclerViewLocalData
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
-const val BASE_URL1 = "https://ron-swanson-quotes.herokuapp.com/"
-
-
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var bottomNavigationView: BottomNavigationView
@@ -49,19 +46,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
         replaceFragment(FragmentProfile())
-
-        val receivedData = intent.getStringExtra("message")
-//        val welcome = findViewById<TextView>(R.id.welcome)
-//        welcome.setText("Name : $receivedData")
-
-//        val frag1 = Example1Fragment.newInstance("frag1", "frag2")
-////        val frag2 = Example2Fragment.newInstance()
-//        val frag3 = Example3Fragment.newInstance()
-//        val frag4 = Example4Fragment.newInstance()
-//
-//        supportFragmentManager.beginTransaction()
-//            .add(R.id.frame1, frag1, "tag_frag1")
-//            .commit()
     }
 
     private fun replaceFragment(fragment: Fragment) {

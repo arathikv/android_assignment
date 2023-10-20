@@ -17,13 +17,13 @@ import com.example.myapplication.R
  */
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
+
 class FragmentProfile : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
     private lateinit var usernameTextView: TextView
     private lateinit var emailTextView: TextView
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,23 +45,18 @@ class FragmentProfile : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        usernameTextView=view.findViewById(R.id.usernameTextView)
-        emailTextView=view.findViewById(R.id.emailTextView)
+        usernameTextView = view.findViewById(R.id.usernameTextView)
+        emailTextView = view.findViewById(R.id.emailTextView)
 
+        var sh = requireContext().getSharedPreferences("SharedPref", Context.MODE_PRIVATE)
 
-        var sh= requireContext().getSharedPreferences("SharedPref", Context.MODE_PRIVATE)
+        val name = sh.getString("name", "")
+        val email = sh.getString("email", "")
 
-        val name=sh.getString("name","")
-        val email=sh.getString("email","")
-
-
-        usernameTextView.text="Name: $name"
-        emailTextView.text="Email: $email"
-
-
-//        var sh = getSharedPreferences("SharedPref", MODE_PRIVATE)
-
+        usernameTextView.text = "Name: $name"
+        emailTextView.text = "Email: $email"
     }
+
     companion object {
         /**
          * Use this factory method to create a new instance of

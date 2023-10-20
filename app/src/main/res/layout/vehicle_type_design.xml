@@ -23,7 +23,7 @@
         android:orientation="horizontal"
         android:padding="5dp">
         <TextView
-            android:id="@+id/type1"
+            android:id="@+id/vehicleType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
