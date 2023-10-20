@@ -26,8 +26,6 @@ class FragmentCarDetails : Fragment() {
         val recyclerview = view.findViewById<RecyclerView>(R.id.recyclerview_vehicle_type)
         recyclerview.layoutManager = LinearLayoutManager(requireContext())
 
-
-
         println(arguments)
         val carData = arguments?.getParcelable("carData") as CarResult?
 

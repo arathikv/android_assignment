@@ -46,7 +46,6 @@ class CarAdapter(private val mList: List<CarResult>) : RecyclerView.Adapter<CarA
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val textView1: TextView = itemView.findViewById(R.id.txtcarname)
-
         val textView: TextView = itemView.findViewById(R.id.txtcarCountry)
     }
 }
