@@ -25,7 +25,6 @@ class FragmentCarList : Fragment() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CarAdapter
     private var isScrolling = false
-
     private var pageSize=10
 
     private lateinit var originalCarDataList: List<CarResult>
