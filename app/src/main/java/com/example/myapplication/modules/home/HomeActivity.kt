@@ -1,10 +1,11 @@
 package com.example.myapplication.modules.home
 
+import Example4Fragment
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
-import com.example.myapplication.modules.home.cars.Example4Fragment
+
 import com.example.myapplication.modules.home.profile.FragmentProfile
 import com.example.myapplication.modules.home.quotes.FragmentQuotes
 import com.example.myapplication.modules.home.recyclerview.FragmentRecyclerViewLocalData

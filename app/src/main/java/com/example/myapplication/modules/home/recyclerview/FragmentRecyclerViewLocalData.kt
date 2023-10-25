@@ -16,6 +16,14 @@ class FragmentRecyclerViewLocalData : Fragment() {
         super.onCreate(savedInstanceState)
 
     }
+    private lateinit var recyclerView: RecyclerView
+    private val data = ArrayList<RecyclerViewDataItems>()
+    private lateinit var adapter: CustomAdapter
+
+    private var currentPage = 0
+    private val itemsPerPage = 5
+    private var isLoading = false
+    private var isLastPage = false
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -23,7 +31,7 @@ class FragmentRecyclerViewLocalData : Fragment() {
         val view = inflater.inflate(R.layout.fragment_recycler_view_local_data, container, false)
 
         // Getting the RecyclerView by its ID
-        val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
+        recyclerView = view.findViewById<RecyclerView>(R.id.recyclerview)
 
         // This creates a vertical layout manager
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
@@ -38,13 +46,52 @@ class FragmentRecyclerViewLocalData : Fragment() {
         }
 
         // This will pass the ArrayList to our Adapter
-        val adapter = CustomAdapter(data)
+        adapter = CustomAdapter(data)
 
         // Setting the Adapter with the RecyclerView
         recyclerView.adapter = adapter
-
+        // Add an OnScrollListener to handle pagination
+//        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                super.onScrolled(recyclerView, dx, dy)
+//                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
+//                val visibleItemCount = layoutManager.childCount
+//                val totalItemCount = layoutManager.itemCount
+//                val firstVisibleItemPosition = layoutManager.findFirstVisibleItemPosition()
+//
+//                if (!isLoading && !isLastPage) {
+//                    if (visibleItemCount + firstVisibleItemPosition >= totalItemCount
+//                        && firstVisibleItemPosition >= 0
+//                        && totalItemCount >= itemsPerPage
+//                    ) {
+//                        loadMoreItems()
+//                    }
+//                }
+//            }
+//        })
+//        loadMoreItems()
         return view
 
+    }
+    private fun loadMoreItems() {
+        // Simulate loading new items. You should replace this with your data loading logic.
+        val newItems = ArrayList<RecyclerViewDataItems>()
+        for (i in 1..itemsPerPage) {
+            val nextItemIndex = currentPage * itemsPerPage + i
+            if (nextItemIndex < 20) {
+                newItems.add(RecyclerViewDataItems(R.drawable.ic_baseline_folder_24, "Folder $nextItemIndex"))
+            }
+        }
+
+        data.addAll(newItems)
+        adapter.notifyDataSetChanged()
+
+        currentPage++
+        isLoading = false
+
+        if (data.size >= 20) {
+            isLastPage = true
+        }
     }
 
     companion object {

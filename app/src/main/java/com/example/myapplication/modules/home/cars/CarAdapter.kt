@@ -1,5 +1,6 @@
 package com.example.myapplication.modules.home.cars
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.myapplication.R
 import com.example.myapplication.models.CarResult
 
-class CarAdapter(private val mList: List<CarResult>) :
+class CarAdapter(private var mList: List<CarResult>) :
     RecyclerView.Adapter<CarAdapter.ViewHolder>() {
 
     private var itemClickListener: OnItemClickListener? = null
@@ -43,9 +44,16 @@ class CarAdapter(private val mList: List<CarResult>) :
     override fun getItemCount(): Int {
         return mList.size
     }
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateData(newData: List<CarResult>) {
+        mList=newData
+        notifyDataSetChanged()
+    }
 
     class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
         val carNameTextView: TextView = itemView.findViewById(R.id.txtCarName)
         val carCountryTextView: TextView = itemView.findViewById(R.id.txtCarCountry)
     }
 }
+
+
