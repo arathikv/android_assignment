@@ -139,7 +139,7 @@ class Example4Fragment : Fragment() {
 
     private lateinit var originalCarDataList: List<CarResult>
     private lateinit var tempCarDataList: List<CarResult>
-
+    private lateinit var progressBar: ProgressBar
     private val handler = Handler(Looper.getMainLooper())
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -203,8 +203,6 @@ class Example4Fragment : Fragment() {
         // Load initial data
 
         viewModel.carLiveData.observe(this,  {
-            // Use carResults directly to update the adapter
-
             originalCarDataList=it.Results
             tempCarDataList= it.Results.subList(0, minOf(10,it.Results.size))
 
@@ -220,14 +218,15 @@ class Example4Fragment : Fragment() {
     }
 
     private fun loadMoreItems() {
-
+        progressBar = view?.findViewById(R.id.progressBar) !!
         var pageStart= tempCarDataList.size
         var pageEnd= minOf(pageStart+pageSize,originalCarDataList.size)
-
+        progressBar.visibility = View.VISIBLE
         tempCarDataList+= originalCarDataList.subList(pageStart,pageEnd)
 
         handler.postDelayed({
             adapter.updateData(tempCarDataList)
+            progressBar.visibility = View.GONE
         }, 2000)
 
     }
