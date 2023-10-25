@@ -159,21 +159,30 @@ class FragmentCarList : Fragment() {
 
         viewModel = ViewModelProvider(this).get(CarViewModel::class.java)
 
-        // Initialize your adapter with an empty list
-        adapter = CarAdapter(mutableListOf())
 
-        // Set an item click listener for the adapter
-        adapter.setOnItemClickListener(object : CarAdapter.OnItemClickListener {
-            override fun onItemClick(carData: CarResult) {
-                val anotherFragment = FragmentCarDetails.newInstance(carData)
-                val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                transaction.replace(R.id.frame1, anotherFragment)
-                transaction.addToBackStack(null)
-                transaction.commit()
-            }
+        // Load initial data
+
+        viewModel.carLiveData.observe(this,  {
+            originalCarDataList=it.Results
+            tempCarDataList= it.Results.subList(0, minOf(10,it.Results.size))
+
+            adapter = CarAdapter(tempCarDataList)
+
+            // Set an item click listener for the adapter
+            adapter.setOnItemClickListener(object : CarAdapter.OnItemClickListener {
+                override fun onItemClick(carData: CarResult) {
+                    val anotherFragment = FragmentCarDetails.newInstance(carData)
+                    val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                    transaction.replace(R.id.frame1, anotherFragment)
+                    transaction.addToBackStack(null)
+                    transaction.commit()
+                }
+            })
+
+            recyclerView.adapter=adapter
+            progressBar.visibility = View.GONE
         })
 
-        recyclerView.adapter = adapter
 
         // Implement pagination when scrolling
         recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -200,17 +209,8 @@ class FragmentCarList : Fragment() {
             }
         })
 
-        // Load initial data
 
-        viewModel.carLiveData.observe(this,  {
-            originalCarDataList=it.Results
-            tempCarDataList= it.Results.subList(0, minOf(10,it.Results.size))
 
-            adapter = CarAdapter(tempCarDataList)
-
-            recyclerView.adapter=adapter
-            progressBar.visibility = View.GONE
-        })
 
         viewModel.makeCarApiCall()
 
