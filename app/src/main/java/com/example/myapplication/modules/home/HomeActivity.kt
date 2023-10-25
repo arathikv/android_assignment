@@ -1,10 +1,12 @@
 package com.example.myapplication.modules.home
 
-import Example4Fragment
+
+
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import com.example.myapplication.R
+import com.example.myapplication.modules.home.cars.FragmentCarList
 
 import com.example.myapplication.modules.home.profile.FragmentProfile
 import com.example.myapplication.modules.home.quotes.FragmentQuotes
@@ -39,7 +41,7 @@ class HomeActivity : AppCompatActivity() {
                 }
 
                 R.id.bottom_cars -> {
-                    replaceFragment(Example4Fragment())
+                    replaceFragment(FragmentCarList())
                     true
                 }
 

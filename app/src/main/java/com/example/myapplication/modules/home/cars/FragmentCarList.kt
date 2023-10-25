@@ -1,4 +1,4 @@
-//package com.example.myapplication.modules.home.cars
+package com.example.myapplication.modules.home.cars
 //
 //import android.os.Bundle
 //import android.util.Log
@@ -129,7 +129,7 @@ import com.example.myapplication.modules.home.cars.CarAdapter
 import com.example.myapplication.modules.home.cars.FragmentCarDetails
 import com.example.myapplication.viewmodels.CarViewModel
 
-class Example4Fragment : Fragment() {
+class FragmentCarList : Fragment() {
     private lateinit var viewModel :CarViewModel
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: CarAdapter
@@ -233,6 +233,6 @@ class Example4Fragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = Example4Fragment()
+        fun newInstance() = FragmentCarList()
     }
 }
