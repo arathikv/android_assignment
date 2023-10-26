@@ -30,7 +30,8 @@ class CarAdapter(private var mList: List<CarResult>) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val carResult = mList[position]
-        holder.carNameTextView.text = carResult.Mfr_CommonName
+        holder.carNameTextView.text = if(carResult.Mfr_CommonName!=null)carResult.Mfr_CommonName
+                                        else carResult.Mfr_Name
         holder.carCountryTextView.text = carResult.Country
         holder.itemView.setOnClickListener {
             itemClickListener?.onItemClick(carResult)

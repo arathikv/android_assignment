@@ -6,23 +6,37 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.myapplication.models.Car
 import com.example.myapplication.models.CarResult
+import com.example.myapplication.modules.home.cars.CarRemoteDataSource
 import com.example.myapplication.network.CarHelper
 import com.example.myapplication.network.CarInterface
 import kotlinx.coroutines.launch
 
+//class CarViewModel : ViewModel() {
+//    var carLiveData: MutableLiveData<Car> = MutableLiveData()
+//
+//    fun makeCarApiCall() {
+//        val retroInstance = CarHelper.getInstance()
+//        val apiservice = retroInstance.create(CarInterface::class.java)
+//        viewModelScope.launch {
+//            val response = apiservice.getData()
+//            carLiveData.value = response
+//        }
+//    }
+//}
+////many pages
 class CarViewModel : ViewModel() {
-    var carLiveData: MutableLiveData<Car> = MutableLiveData()
+    private val carRemoteDataSource = CarRemoteDataSource()
 
-    fun makeCarApiCall() {
-        val retroInstance = CarHelper.getInstance()
-        val apiservice = retroInstance.create(CarInterface::class.java)
+    val carLiveData = MutableLiveData<Car>()
+//    var currentPage = 1
+
+    fun makeCarApiCall(page: Int) {
         viewModelScope.launch {
-            val response = apiservice.getData()
+            val response = carRemoteDataSource.fetchData(page)
             carLiveData.value = response
         }
     }
 }
-
 //class CarViewModel : ViewModel() {
 //    private var currentPage = 1
 //    private val pageSize = 5

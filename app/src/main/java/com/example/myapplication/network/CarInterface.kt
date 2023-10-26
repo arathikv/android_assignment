@@ -6,7 +6,7 @@ import retrofit2.http.Query
 
 interface CarInterface {
     @GET("/api/vehicles/getallmanufacturers?format=json")
-    suspend fun getData(): Car
+//    suspend fun getData(): Car
 
-//    suspend fun getData(@Query("page") page: Int): Car
+    suspend fun getData(@Query("page") page: Int): Car
 }
